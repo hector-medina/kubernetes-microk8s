@@ -96,3 +96,11 @@ UUID=EC0EC3860EC347F2 /media/sda1 ntfs-3g auto,users,permissions 0 0
 ````
 
 To make sure everything is okay, reboot your system and you should be able to see your new disk in ``/media/sda1`` path.
+
+9. ***Start microk8s***
+
+To start running microk8s you should run the following command:
+
+````
+microk8s start
+````
