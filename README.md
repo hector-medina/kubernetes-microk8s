@@ -78,3 +78,21 @@ Once all these steps have been performed, we should reboot to asure everything i
 ````
 sudo reboot
 ````
+
+8. ***Install additional storage***
+
+It is recommended to save all persistent volumes in a HDD, to do that you should configure your Raspberry Pi to mount disks automatically.
+
+First, get a list of all your devices connected to the server.
+
+````
+sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,UUID
+````
+
+You should see the UUID of your disk, which is a unique identifier of it. Go copy it and paste this along the following settings in ``/etc/fstab`` (I asume your UUID is EC0EC3860EC347F2)
+
+````
+UUID EC0EC3860EC347F2 /media/sda1 ntfs-3g auto,users,permissions 0 0
+````
+
+To make sure everything is okay, reboot your system and you should be able to see your new disk in ``/media/sda1`` path.
