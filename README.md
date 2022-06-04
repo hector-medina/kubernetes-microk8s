@@ -89,10 +89,10 @@ First, get a list of all your devices connected to the server.
 sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,UUID
 ````
 
-You should see the UUID of your disk, which is a unique identifier of it. Go copy it and paste this along the following settings in ``/etc/fstab`` (I asume your UUID is EC0EC3860EC347F2)
+You should see the UUID of your disk, which is a unique identifier of it. Go copy it and paste this along the following settings in ``/etc/fstab`` (I asume your UUID is EC0EC3860EC347F2, you have a have created the /media/sda1 directory and your HDD is in NTFS format.)
 
 ````
-UUID EC0EC3860EC347F2 /media/sda1 ntfs-3g auto,users,permissions 0 0
+UUID=EC0EC3860EC347F2 /media/sda1 ntfs-3g auto,users,permissions 0 0
 ````
 
 To make sure everything is okay, reboot your system and you should be able to see your new disk in ``/media/sda1`` path.
