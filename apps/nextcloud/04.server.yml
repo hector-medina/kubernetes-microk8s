@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud-server
+  labels:
+    app: nextcloud-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextcloud-server
+  template:
+    metadata:
+      labels:
+        app: nextcloud-server
+    spec:
+      containers:
+        - name: nextcloud
+          image: nextcloud
+          env:
+          - name: DB_URL
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: mongo-url
