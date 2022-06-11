@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: DB_URL
-          valueFrom:
-            configMapKeyRef:
-              name: mongo-config
-              key: mongo-url
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: mongo-url
           image: nextcloud
