@@ -30,6 +30,10 @@ git clone git@github.com:hector-medina/kubernetes-nextcloud.git
 cd kubernetes-nextcloud
 ````
 
+### Create a .env file.
+
+An .env file it's gonna be used for providing basic settings to the pods, so you will need to modify the /kubernetes-microk8s/apps/nextcloud/.env file with your custom settings (password included)
+
 ### Create *nextclour* namespace.
 
 ````
