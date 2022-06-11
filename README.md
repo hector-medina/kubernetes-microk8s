@@ -4,8 +4,10 @@ This repository explains how to install, setup and use [microk8s](https://microk
 
 ## INSTALLATION.
 
-You will find how to install on [installation docs](docs/en/install.md)
+You will find how to install on [installation docs](docs/en/installation.md)
 
 ## CLUSTER DASHBOARD.
 
-## NEXTCLOUD DEPLOYMENT.
+## NEXTCLOUD.
+
+Nextcloud is a  
