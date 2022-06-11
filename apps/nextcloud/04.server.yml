@@ -15,11 +15,9 @@ spec:
         app: nextcloud-server
     spec:
       containers:
-        - name: nextcloud
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-config
+              key: mongo-url
           image: nextcloud
-          env:
-          - name: DB_URL
-            valueFrom:
-              configMapKeyRef:
-                name: mongo-config
-                key: mongo-url
