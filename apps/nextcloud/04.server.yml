@@ -15,9 +15,5 @@ spec:
         app: nextcloud-server
     spec:
       containers:
-        - name: DB_URL
-            valueFrom:
-              configMapKeyRef:
-                name: mongo-config
-                key: mongo-url
+        - name: $(email_cert_tls)
           image: nextcloud
