@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud-db-deployment
+  namespace: nextcloud
+  labels:
+    app: nextcloud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextcloud-db
+  template:
+    metadata:
+      labels:
+        app: nextcloud-db
+    spec:
+      containers:
+        - name: nextcloud-db-deployment
+          image: mariadb
+          env:
+          - name: MARIADB_DATABASE
+            value: nextcloud
+          - name: MARIADB_ROOT_PASSWORD
+            value: Tronchudo1989
+          - name: MARIADB_USER
+            value: nextcloud
+          - name: MARIADB_PASSWORD
+            value: Tronchudo1989
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "400m"
+          volumeMounts:
+          - name: database-data
+            mountPath: /var/lib/mysql
+      volumes:
+      - name: database-data
+        persistentVolumeClaim:
+          claimName: database-data
