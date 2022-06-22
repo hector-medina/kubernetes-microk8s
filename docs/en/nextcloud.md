@@ -64,3 +64,4 @@ This last step takes 5 to 10 minutes to perform because resources have been limi
 ````
 microk8s kubectl apply -f nextcloud/04.\ Server/
 ````
+
