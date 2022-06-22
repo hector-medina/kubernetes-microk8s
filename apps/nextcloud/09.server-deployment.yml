@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud-server
+  namespace: nextcloud
+  labels:
+    app: nextcloud-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextcloud-server
+  template:
+    metadata:
+      labels:
+        app: nextcloud-server
+    spec:
+      containers:
+        - name: nextcloud
+          image: nextcloud
+          env:
+          - name: MYSQL_DATABASE
+            value: nextcloud
+          - name: MYSQL_USER
+            value: nextcloud
+          - name: MYSQL_PASSWORD
+            value: Tronchudo1989
+          - name: MYSQL_HOST
+            value: nextcloud-db-service
+          - name: NEXTCLOUD_ADMIN_USER
+            value: hector.medina
+          - name: NEXTCLOUD_ADMIN_PASSWORD
+            value: Tronchudo1989
+          - name: NEXTCLOUD_DATA_DIR
+            value: /var/www/html/data
+          - name: NEXTCLOUD_TRUSTED_DOMAINS
+            value: nextcloud.hectormedina.es
+          - name: OVERWRITEHOST
+            value: nextcloud.hectormedina.es
+          - name: OVERWRITEPROTOCOL
+            value: https
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "800m"
+          volumeMounts:
+          - name: nextcloud-data
+            mountPath: /var/www/html
+      volumes:
+      - name: nextcloud-data
+        persistentVolumeClaim:
+          claimName: nextcloud-data
