@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: nextcloud-db-deployment
-          image: mariadb
+          image: mariadb:10.6.8
           env:
           - name: MARIADB_DATABASE
             value: nextcloud
