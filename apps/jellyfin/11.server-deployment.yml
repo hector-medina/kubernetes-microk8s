@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin-server
+  namespace: jellyfin
+  labels:
+    app: jellyfin-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin-server
+  template:
+    metadata:
+      labels:
+        app: jellyfin-server
+    spec:
+      containers:
+        - name: jellyfin
+          image: jellyfin/jellyfin
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "800m"
+          volumeMounts:
+          - name: jellyfin-config
+            mountPath: /config
+          - name: jellyfin-cache
+            mountPath: /cache
+          - name: jellyfin-movies
+            mountPath: /movies
+          - name: jellyfin-tvshows
+            mountPath: /tvshows
+      volumes:
+      - name: jellyfin-config
+        persistentVolumeClaim:
+          claimName: jellyfin-config
+      - name: jellyfin-cache
+        persistentVolumeClaim:
+          claimName: jellyfin-cache
+      - name: jellyfin-movies
+        persistentVolumeClaim:
+          claimName: jellyfin-movies
+      - name: jellyfin-tvshows
+        persistentVolumeClaim:
+          claimName: jellyfin-tvshows
+          
