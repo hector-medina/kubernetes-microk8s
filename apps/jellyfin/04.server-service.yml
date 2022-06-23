@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-service
+  namespace: jellyfin
+  labels:
+    app: jellyfin
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8096
+  selector:
+    app: jellyfin-server

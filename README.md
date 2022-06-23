@@ -11,3 +11,6 @@ You will find how to install on [installation docs](docs/en/installation.md)
 ## NEXTCLOUD.
 
 Nextcloud is a  
+
+## JELLYFIN.
+ 
