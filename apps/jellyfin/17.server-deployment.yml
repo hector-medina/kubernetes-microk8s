@@ -36,6 +36,10 @@ spec:
             mountPath: /tvshows
           - name: jellyfin-kids
             mountPath: /kids
+          - name: jellyfin-english
+            mountPath: /english
+          - name: jellyfin-family
+            mountPath: /family
       volumes:
       - name: jellyfin-config
         persistentVolumeClaim:
@@ -52,4 +56,10 @@ spec:
       - name: jellyfin-kids
         persistentVolumeClaim:
           claimName: jellyfin-kids
+      - name: jellyfin-english
+        persistentVolumeClaim:
+          claimName: jellyfin-english
+      - name: jellyfin-family
+        persistentVolumeClaim:
+          claimName: jellyfin-family
           
