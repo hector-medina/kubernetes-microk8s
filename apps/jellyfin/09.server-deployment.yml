@@ -30,16 +30,8 @@ spec:
             mountPath: /config
           - name: jellyfin-cache
             mountPath: /cache
-          - name: jellyfin-movies
-            mountPath: /movies
-          - name: jellyfin-tvshows
-            mountPath: /tvshows
-          - name: jellyfin-kids
-            mountPath: /kids
-          - name: jellyfin-english
-            mountPath: /english
-          - name: jellyfin-family
-            mountPath: /family
+          - name: jellyfin-media
+            mountPath: /media
       volumes:
       - name: jellyfin-config
         persistentVolumeClaim:
@@ -47,19 +39,7 @@ spec:
       - name: jellyfin-cache
         persistentVolumeClaim:
           claimName: jellyfin-cache
-      - name: jellyfin-movies
+      - name: jellyfin-media
         persistentVolumeClaim:
-          claimName: jellyfin-movies
-      - name: jellyfin-tvshows
-        persistentVolumeClaim:
-          claimName: jellyfin-tvshows
-      - name: jellyfin-kids
-        persistentVolumeClaim:
-          claimName: jellyfin-kids
-      - name: jellyfin-english
-        persistentVolumeClaim:
-          claimName: jellyfin-english
-      - name: jellyfin-family
-        persistentVolumeClaim:
-          claimName: jellyfin-family
+          claimName: jellyfin-media
           
