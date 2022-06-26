@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jackett-ingress
+  namespace: jackett
+  annotations:
+    cert-manager.io/cluster-issuer: "jackett-letsencrypt"
+spec:
+  tls:
+  - hosts:
+    - jackett.hectormedina.es
+    secretName: jackett-tls-secret
+  rules:
+  - host: jackett.hectormedina.es
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jackett-service
+            port:
+              number: 80
