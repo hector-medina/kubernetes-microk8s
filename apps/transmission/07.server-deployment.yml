@@ -18,6 +18,13 @@ spec:
       containers:
         - name: transmission
           image: lscr.io/linuxserver/transmission:latest
+           env:
+          - name: TRANSMISSION_WEB_HOME
+            value: /combustion-release/
+          - name: USER
+            value: hector.medina
+          - name: PASS
+            value: Tronchudo1989
           resources:
             requests:
               memory: "128Mi"
