@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  namespace: sonarr
+  name: sonarr-letsencrypt
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: hmedcab@gmail.com
+    privateKeySecretRef:
+       name: sonarr-letsencrypt
+    solvers:
+    - http01:
+        ingress:
+          class: public

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr-server
+  namespace: sonarr
+  labels:
+    app: sonarr-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonarr-server
+  template:
+    metadata:
+      labels:
+        app: sonarr-server
+    spec:
+      containers:
+        - name: sonarr
+          image: lscr.io/linuxserver/sonarr:latest
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "400m"
+          volumeMounts:
+          - name: sonarr-config
+            mountPath: /config
+      volumes:
+      - name: sonarr-config
+        persistentVolumeClaim:
+          claimName: sonarr-config
+          

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "sonarr-config"
+  namespace: sonarr
+  labels:
+    type: "local"
+spec:
+  storageClassName: "manual"
+  capacity:
+    storage: "50Gi"
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/media/sda1/sonarr/config"

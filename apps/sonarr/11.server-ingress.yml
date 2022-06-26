@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sonarr-ingress
+  namespace: sonarr
+  annotations:
+    cert-manager.io/cluster-issuer: "sonarr-letsencrypt"
+spec:
+  tls:
+  - hosts:
+    - sonarr.hectormedina.es
+    secretName: sonarr-tls-secret
+  rules:
+  - host: sonarr.hectormedina.es
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sonarr-service
+            port:
+              number: 80
