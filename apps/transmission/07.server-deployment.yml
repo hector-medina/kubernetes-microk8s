@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transmission-server
+  namespace: transmission
+  labels:
+    app: transmission-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transmission-server
+  template:
+    metadata:
+      labels:
+        app: transmission-server
+    spec:
+      containers:
+        - name: transmission
+          image: lscr.io/linuxserver/transmission:latest
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "400m"
+          volumeMounts:
+          - name: transmission-config
+            mountPath: /config
+      volumes:
+      - name: transmission-config
+        persistentVolumeClaim:
+          claimName: transmission-config
+          

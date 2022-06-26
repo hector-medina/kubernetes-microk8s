@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: transmission-service-torrent
+  namespace: transmission
+  labels:
+    app: transmission
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 51413
+    targetPort: 51413
+  selector:
+    app: transmission-server

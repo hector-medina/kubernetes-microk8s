@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: transmission-service-web
+  namespace: transmission
+  labels:
+    app: transmission
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9091
+  selector:
+    app: transmission-server

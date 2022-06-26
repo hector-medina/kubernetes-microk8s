@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "transmission-downloads"
+  namespace: transmission
+  labels:
+    type: "local"
+spec:
+  storageClassName: "manual"
+  capacity:
+    storage: "250Gi"
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/media/sda1/transmission/downloads"
