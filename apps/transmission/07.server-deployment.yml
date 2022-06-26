@@ -35,8 +35,13 @@ spec:
           volumeMounts:
           - name: transmission-config
             mountPath: /config
+          - name: transmission-downloads
+            mountPath: /downloads
       volumes:
       - name: transmission-config
         persistentVolumeClaim:
           claimName: transmission-config
+      - name: transmission-downloads
+        persistentVolumeClaim:
+          claimName: transmission-downloads
           
