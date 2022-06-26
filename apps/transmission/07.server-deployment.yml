@@ -18,7 +18,7 @@ spec:
       containers:
         - name: transmission
           image: lscr.io/linuxserver/transmission:latest
-           env:
+          env:
           - name: TRANSMISSION_WEB_HOME
             value: /combustion-release/
           - name: USER
