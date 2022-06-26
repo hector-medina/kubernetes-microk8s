@@ -6,9 +6,10 @@ metadata:
   labels:
     app: transmission
 spec:
-  type: LoadBalancer
-  loadBalancerIP: 192.168.0.20
   ports:
+  - protocol: TCP
+    port: 51413
+    targetPort: 51413
   - protocol: TCP
     port: 51413
     targetPort: 51413
