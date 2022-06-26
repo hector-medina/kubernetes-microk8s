@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr-server
+  namespace: radarr
+  labels:
+    app: radarr-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radarr-server
+  template:
+    metadata:
+      labels:
+        app: radarr-server
+    spec:
+      containers:
+        - name: radarr
+          image: lscr.io/linuxserver/radarr:latest
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "400m"
+          volumeMounts:
+          - name: radarr-config
+            mountPath: /config
+      volumes:
+      - name: radarr-config
+        persistentVolumeClaim:
+          claimName: radarr-config
+          
