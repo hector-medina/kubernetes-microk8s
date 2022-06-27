@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: navidrome-server
+  namespace: navidrome
+  labels:
+    app: navidrome-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: navidrome-server
+  template:
+    metadata:
+      labels:
+        app: navidrome-server
+    spec:
+      containers:
+        - name: navidrome
+          image: deluan/navidrome:latest
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "400m"
+          volumeMounts:
+          - name: navidrome-data
+            mountPath: /data
+          - name: navidrome-music
+            mountPath: /music
+      volumes:
+      - name: navidrome-data
+        persistentVolumeClaim:
+          claimName: navidrome-data
+      - name: navidrome-music
+        persistentVolumeClaim:
+          claimName: navidrome-music
+          

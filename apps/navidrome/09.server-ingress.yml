@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: navidrome-ingress
+  namespace: navidrome
+  annotations:
+    cert-manager.io/cluster-issuer: "navidrome-letsencrypt"
+spec:
+  tls:
+  - hosts:
+    - navidrome.hectormedina.es
+    secretName: navidrome-tls-secret
+  rules:
+  - host: navidrome.hectormedina.es
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: navidrome-service
+            port:
+              number: 80
