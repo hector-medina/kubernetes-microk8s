@@ -10,4 +10,4 @@ spec:
   - protocol: TCP
     port: 5432
   selector:
-    app: wikijs-db-deployment
+    app: wikijs-db
