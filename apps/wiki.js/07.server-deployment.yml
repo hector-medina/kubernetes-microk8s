@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wikijs-server
+  namespace: wikijs
+  labels:
+    app: wikijs-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wikijs-server
+  template:
+    metadata:
+      labels:
+        app: wikijs-server
+    spec:
+      containers:
+        - name: wikijs
+          image: ghcr.io/requarks/wiki:2
+          env:
+          - name: DB_TYPE
+            value: postgres
+          - name: DB_HOST
+            value: wikijs-database-service
+          - name: DB_PORT
+            value: 5432
+          - name: DB_USER
+            value: wikijs
+          - name: DB_PASS
+            value: wikijsrocks
+          - name: DB_NAME
+            value: wiki
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "400m"

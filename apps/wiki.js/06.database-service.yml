@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wikijs-database-service
+  namespace: wikijs
+  labels:
+    app: wikijs
+spec:
+  ports:
+  - protocol: TCP
+    port: 5432
+  selector:
+    app: wikijs-db-deployment

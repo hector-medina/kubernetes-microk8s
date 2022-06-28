@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wikijs-ingress
+  namespace: wikijs
+  annotations:
+    cert-manager.io/cluster-issuer: "wikijs-letsencrypt"
+spec:
+  tls:
+  - hosts:
+    - wiki.hectormedina.es
+    secretName: wikijs-tls-secret
+  rules:
+  - host: wiki.hectormedina.es
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wikijs-service
+            port:
+              number: 80

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wikijs-db-deployment
+  namespace: wikijs
+  labels:
+    app: wikijs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wikijs-db
+  template:
+    metadata:
+      labels:
+        app: wikijs-db
+    spec:
+      containers:
+        - name: wikijs-db-deployment
+          image: postgres:11-alpine
+          env:
+          - name: POSTGRES_DB
+            value: wiki
+          - name: POSTGRES_PASSWORD
+            value: wikijsrocks
+          - name: POSTGRES_USER
+            value: wikijs
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "400m"
+          volumeMounts:
+          - name: wikijs-database-data
+            mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: wikijs-database-data
+        persistentVolumeClaim:
+          claimName: wikijs-database-data
