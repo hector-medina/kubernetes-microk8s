@@ -4,7 +4,7 @@ metadata:
   name: wikijs-database-service
   namespace: wikijs
   labels:
-    app: wikijs
+    app: wikijs-db
 spec:
   ports:
   - protocol: TCP

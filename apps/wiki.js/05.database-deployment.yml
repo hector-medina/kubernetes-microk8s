@@ -4,7 +4,7 @@ metadata:
   name: wikijs-db-deployment
   namespace: wikijs
   labels:
-    app: wikijs
+    app: wikijs-db
 spec:
   replicas: 1
   selector:
