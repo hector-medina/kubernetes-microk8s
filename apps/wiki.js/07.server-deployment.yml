@@ -24,7 +24,7 @@ spec:
           - name: DB_HOST
             value: wikijs-database-service
           - name: DB_PORT
-            value: 5432
+            value: "5432"
           - name: DB_USER
             value: wikijs
           - name: DB_PASS
