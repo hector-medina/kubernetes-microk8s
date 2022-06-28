@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: wikijs
-          image: ghcr.io/requarks/wiki:2
+          image: ghcr.io/requarks/wiki:2.5
           env:
           - name: DB_TYPE
             value: postgres
