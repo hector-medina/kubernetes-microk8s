@@ -23,8 +23,8 @@ spec:
               memory: "128Mi"
               cpu: "200m"
             limits:
-              memory: "512Mi"
-              cpu: "800m"
+              memory: "1Gi"
+              cpu: "1000m"
           volumeMounts:
           - name: jellyfin-config
             mountPath: /config
