@@ -17,9 +17,9 @@ spec:
     metadata:
       labels:
         app: zimbra
-      annotations:
-        container.apparmor.security.beta.kubernetes.io/zimbra: unconfined
-        container.seccomp.security.alpha.kubernetes.io/zimbra: unconfined
+  #    annotations:
+ #       container.apparmor.security.beta.kubernetes.io/zimbra: unconfined
+#        container.seccomp.security.alpha.kubernetes.io/zimbra: unconfined
     spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 180
