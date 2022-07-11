@@ -4,7 +4,7 @@ metadata:
   name: mail.hectormedina.es
   namespace: zimbra
   annotations:
-  cert-manager.io/cluster-issuer: "zimbra-letsencrypt"
+    cert-manager.io/cluster-issuer: "zimbra-letsencrypt"
 spec:
   tls:
   - hosts:
