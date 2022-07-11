@@ -1,0 +1,58 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: zimbra
+  name: zimbra
+  namespace: zimbra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zimbra
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: zimbra
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/zimbra: unconfined
+        container.seccomp.security.alpha.kubernetes.io/zimbra: unconfined
+    spec:
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 180
+      containers:
+      - name: zimbra
+        image: griffinplus/zimbra
+        imagePullPolicy: Always
+        env:
+        - name: EXTERNAL_HOST_FQDN
+          value: mail.hectormedina.es
+        - name: MAIL_DOMAINS
+          value: hectormedina.es
+        volumeMounts:
+        - name: zimbra
+          mountPath: /data
+        - name: tls-certs
+          mountPath: /data/app/tls
+          readOnly: true
+        securityContext:
+          capabilities:
+            add:
+            - NET_ADMIN
+            - SYS_ADMIN
+            - SYS_PTRACE
+      volumes:
+      - name: zimbra
+        hostPath:
+          path: "/media/sda1/zimbra"
+      - name: tls-certs
+        secret:
+          secretName: tls-mail.hectormedina.es
+          items:
+          - key: tls.key
+            path: zimbra.key
+          - key: tls.crt
+            path: zimbra.crt

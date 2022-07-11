@@ -1,0 +1,19 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: mail.hectormedina.es
+  namespace: zimbra
+spec:
+  secretName: tls-mail.hectormedina.es
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: mail.hectormedina.es
+  dnsNames:
+  - mail.hectormedina.es
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - mail.hectormedina.es

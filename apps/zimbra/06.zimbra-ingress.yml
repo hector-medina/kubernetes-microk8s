@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mail.hectormedina.es
+  namespace: zimbra
+spec:
+  tls:
+  - hosts:
+    - mail.hectormedina.es
+    secretName: tls-mail.hectormedina.es
+  rules:
+  - host: mail.hectormedina.es
+    http:
+      paths:
+      - backend:
+          serviceName: zimbra-cluster
+          servicePort: 80
