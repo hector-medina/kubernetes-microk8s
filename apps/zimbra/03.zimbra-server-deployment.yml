@@ -21,12 +21,12 @@ spec:
  #       container.apparmor.security.beta.kubernetes.io/zimbra: unconfined
 #        container.seccomp.security.alpha.kubernetes.io/zimbra: unconfined
     spec:
-      restartPolicy: Always
-      terminationGracePeriodSeconds: 180
+      #restartPolicy: Always
+     # terminationGracePeriodSeconds: 180
       containers:
       - name: zimbra
         image: griffinplus/zimbra
-        imagePullPolicy: Always
+       # imagePullPolicy: Always
         env:
         - name: EXTERNAL_HOST_FQDN
           value: mail.hectormedina.es
