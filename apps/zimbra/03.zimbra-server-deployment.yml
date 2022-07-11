@@ -35,9 +35,9 @@ spec:
         volumeMounts:
         - name: zimbra
           mountPath: /data
-        - name: mail-tls-secret
-          mountPath: /data/app/tls
-          readOnly: true
+    #    - name: mail-tls-secret
+    #      mountPath: /data/app/tls
+    #      readOnly: true
         securityContext:
           capabilities:
             add:
@@ -48,6 +48,6 @@ spec:
       - name: zimbra
         hostPath:
           path: "/media/sda1/zimbra"
-      - name: mail-tls-secret
-        secret:
-          secretName: mail-tls-secret
+    #  - name: mail-tls-secret
+    #    secret:
+    #      secretName: mail-tls-secret
