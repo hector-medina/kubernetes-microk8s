@@ -51,8 +51,3 @@ spec:
       - name: mail-tls-secret
         secret:
           secretName: mail-tls-secret
-          items:
-          - key: tls.key
-            path: zimbra.key
-          - key: tls.crt
-            path: zimbra.crt
