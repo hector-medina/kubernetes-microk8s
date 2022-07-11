@@ -1,19 +1,15 @@
 apiVersion: cert-manager.io/v1
-kind: Certificate
+kind: ClusterIssuer
 metadata:
-  name: mail.hectormedina.es
+  name: mail-letsencrypt
   namespace: zimbra
 spec:
-  secretName: tls-mail.hectormedina.es
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  commonName: mail.hectormedina.es
-  dnsNames:
-  - mail.hectormedina.es
   acme:
-    config:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: hmedcab@gmail.com
+    privateKeySecretRef:
+       name: mail-letsencrypt
+    solvers:
     - http01:
-        ingressClass: nginx
-      domains:
-      - mail.hectormedina.es
+        ingress:
+          class: public

@@ -48,9 +48,9 @@ spec:
       - name: zimbra
         hostPath:
           path: "/media/sda1/zimbra"
-      - name: tls-certs
+      - name: mail-tls-secret
         secret:
-          secretName: tls-mail.hectormedina.es
+          secretName: mail-tls-secret
           items:
           - key: tls.key
             path: zimbra.key
