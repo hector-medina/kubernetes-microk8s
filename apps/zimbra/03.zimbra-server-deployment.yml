@@ -11,8 +11,8 @@ spec:
   selector:
     matchLabels:
       app: zimbra
-  strategy:
-    type: Recreate
+  #strategy:
+  #  type: Recreate
   template:
     metadata:
       labels:
